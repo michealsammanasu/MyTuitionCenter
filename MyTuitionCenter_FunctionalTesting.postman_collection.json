@@ -1,0 +1,2168 @@
+{
+	"info": {
+		"_postman_id": "735f0a93-aee6-443b-8ec3-e1206c8d24a6",
+		"name": "My Tuition Center_FunctionalTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29264731",
+		"_collection_link": "https://www.postman.com/speeding-satellite-253136/mytuitioncenter/collection/hhzh8sn/my-tuition-center-functionaltesting?action=share&source=collection_link&creator=29264731"
+	},
+	"item": [
+		{
+			"name": "InstitutionDashboard",
+			"item": [
+				{
+					"name": "TC_Ins_Dashboard_Backend_01_200Ok",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"studentsCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"activeTutorsCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"completedDemoSessionCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"completedRegularSessionCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"tutorData\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/institution?institutionId=65",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"institution"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "65"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Ins_Dashboard_Backend_02_Attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"studentsCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"activeTutorsCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"completedDemoSessionCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"completedRegularSessionCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"tutorData\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/institution?institutionId=65",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"institution"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "65"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Ins_Dashboard_Backend_03_404NotFound",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. 'Institution Not Found' message verification\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Institution Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/institution?institutionId=200",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"institution"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Ins_Dashboard_Backend_04_StringValueInsId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 400 Bad Request Status verification\", function(){\r",
+									"pm.response.to.have.status(400);\r",
+									"pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Bad Request message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+									"pm.expect(pm.response.text()).to.include(\"400\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/institution?institutionId=stringvalue",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"institution"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "stringvalue"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Ins_Dashboard_Backend_05_emptyparameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 400 Bad Request Status verification\", function(){\r",
+									"pm.response.to.have.status(400);\r",
+									"pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Bad Request message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+									"pm.expect(pm.response.text()).to.include(\"400\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/institution?institutionId=",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"institution"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Ins_Dashboard_Backend_05_WithoutParameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 400 Bad Request Status verification\", function(){\r",
+									"pm.response.to.have.status(400);\r",
+									"pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Bad Request message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+									"pm.expect(pm.response.text()).to.include(\"400\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/institution",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"institution"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StudentDashboard",
+			"item": [
+				{
+					"name": "TC_Stu_Dashboard_Backend_01_200Ok",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"plannedRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"completedRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"cancelledRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"pendingApprovalRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"regularSessionDates\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/student?studentId=S_00001",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"student"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": "S_00001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Stu_Dashboard_Backend_02_Attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"plannedRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"completedRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"cancelledRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"pendingApprovalRegularCount\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"regularSessionDates\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/student?studentId=S_00001",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"student"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": "S_00001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Stu_Dashboard_Backend_03_404NotFound",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Student not found message Verification\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Student not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/student?studentId=1221",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"student"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": "1221"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Stu_Dashboard_Backend_04_StudentIDEmpty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 404 Not found status verification\", function(){\r",
+									"pm.response.to.have.status(404);\r",
+									"pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Student not found message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Student not found\");\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/student?studentId=",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"student"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Stu_Dashboard_Backend_05_Withoutparameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 400 Bad Request Status verification\", function(){\r",
+									"pm.response.to.have.status(400);\r",
+									"pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Bad Request message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+									"pm.expect(pm.response.text()).to.include(\"400\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TuitionURL}}/dashboard/student",
+							"host": [
+								"{{TuitionURL}}"
+							],
+							"path": [
+								"dashboard",
+								"student"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OperationsManager_Dashboard",
+			"item": [
+				{
+					"name": "TC_OperManager_Dashboard_Backend_01_200Ok",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"tutorEfficiency\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"sessionCompletionRate\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/dashboard/opsmanager/:userId",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"dashboard",
+								"opsmanager",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "U_00375"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_OperManager_Dashboard_Backend_02_Attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"tutorEfficiency\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"sessionCompletionRate\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/dashboard/opsmanager/:userId",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"dashboard",
+								"opsmanager",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "U_00375"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_OperManager_Dashboard_Backend_03_404NotFound",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Not Found message Verification\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/dashboard/opsmanager/:userId",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"dashboard",
+								"opsmanager",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_OperManager_Dashboard_Backend_04_emptyparameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 404 Not found status verification\", function(){\r",
+									"pm.response.to.have.status(404);\r",
+									"pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Not Found message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/dashboard/opsmanager/:userId",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"dashboard",
+								"opsmanager",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_OperManager_Dashboard_Backend_04_WIthoutUserId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 404 Not found status verification\", function(){\r",
+									"pm.response.to.have.status(404);\r",
+									"pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Not Found message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/dashboard/opsmanager/",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"dashboard",
+								"opsmanager",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TutorDashboard",
+			"item": [
+				{
+					"name": "Tutor_StudentCount",
+					"item": [
+						{
+							"name": "TC_Tutor_Dashboard_Backend_01_200Ok",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Verify the response body\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"studentsCount\");\r",
+											"     pm.expect(pm.response.text()).to.include(\"studentsNames\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/studentcount/:tutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"studentcount",
+										":tutorId"
+									],
+									"variable": [
+										{
+											"key": "tutorId",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_02",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Verify the response body\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"studentsCount\");\r",
+											"     pm.expect(pm.response.text()).to.include(\"studentsNames\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/studentcount/:tutorid",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"studentcount",
+										":tutorid"
+									],
+									"variable": [
+										{
+											"key": "tutorid",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_06_Invalid",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Tutor not found message verification\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/studentcount/:tutorid",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"studentcount",
+										":tutorid"
+									],
+									"variable": [
+										{
+											"key": "tutorid",
+											"value": "T_0021"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_07_emptyTutorID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for Empty Tutor Id \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for Empty Tutor Id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/studentcount/:tutorid",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"studentcount",
+										":tutorid"
+									],
+									"variable": [
+										{
+											"key": "tutorid",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Stu_Dashboard_Backend_09_WithoutParameter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification without path parameter\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for without path parameter\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/studentcount/",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"studentcount",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PopularSubject",
+					"item": [
+						{
+							"name": "TC_Tutor_Dashboard_Backend_08_200Ok",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Verification of popular subject name\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"English\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularsubject/:tutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularsubject",
+										":tutorId"
+									],
+									"variable": [
+										{
+											"key": "tutorId",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_09_Attributes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"Verification of popular subject name\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"English\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularsubject/:tutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularsubject",
+										":tutorId"
+									],
+									"variable": [
+										{
+											"key": "tutorId",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_10_404NotFound",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Tutor not found message Verification\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularsubject/:tutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularsubject",
+										":tutorId"
+									],
+									"variable": [
+										{
+											"key": "tutorId",
+											"value": "T_000047"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_11_EmptyTutorID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for Empty Tutor Id \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for Empty Tutor Id \", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularsubject/:tutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularsubject",
+										":tutorId"
+									],
+									"variable": [
+										{
+											"key": "tutorId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_11_WithoutParameter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification without path parameter\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for without path parameter\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularsubject/",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularsubject",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PopularLocality",
+					"item": [
+						{
+							"name": "TC_Tutor_Dashboard_Backend_14_200Ok",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verification of popular Locality \", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Madurai\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularlocality/:tutorId ",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularlocality",
+										":tutorId "
+									],
+									"variable": [
+										{
+											"key": "tutorId ",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_15_Attributes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verification of popular Locality \", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Madurai\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularlocality/:tutorId ",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularlocality",
+										":tutorId "
+									],
+									"variable": [
+										{
+											"key": "tutorId ",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_16_404NotFound",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Tutor not found message Verification\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularlocality/:tutorId ",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularlocality",
+										":tutorId "
+									],
+									"variable": [
+										{
+											"key": "tutorId ",
+											"value": "T_000041"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_17_EmptyTutorId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for Empty Tutor Id \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for Empty Tutor Id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularlocality/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularlocality",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_17_WithoutParameter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for Without Parameter \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for Without parameter\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/popularlocality/",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"popularlocality",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PopularGrade",
+					"item": [
+						{
+							"name": "TC_Tutor_Dashboard_Backend_20_200Ok",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verification of popular Grade \", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"primary\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/populargradename/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"populargradename",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_21_Attributes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verification of popular Grade \", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"primary\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/populargradename/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"populargradename",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_22_404NotFound",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Tutor not found message Verification\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/populargradename/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"populargradename",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": "T_000043"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_23_EmptyTutorId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for Empty Tutor Id\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for Empty Tutor Id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/populargradename/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"populargradename",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_23_WithoutParameter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for Without parameter\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for Without parameter\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/tutor/populargradename/",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"tutor",
+										"populargradename",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TutorStatisticShown",
+					"item": [
+						{
+							"name": "TC_Tutor_Dashboard_Backend_26_200Ok",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the attributes\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"sessionofDemo\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"sessionofRegular\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"plannedUpcomingsessionofDemo\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"completedsession\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"totalTaughtHoursRegular\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/dashboard/tutor/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"dashboard",
+										"tutor",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_27_Attributes",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status 200 OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the attributes\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"sessionofDemo\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"sessionofRegular\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"plannedUpcomingsessionofDemo\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"completedsession\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"totalTaughtHoursRegular\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/dashboard/tutor/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"dashboard",
+										"tutor",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": "T_00004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_28_404NotFound",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification with invalid Tutor Id\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message Verification for Invalid Tutor Id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/dashboard/tutor/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"dashboard",
+										"tutor",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": "T_000045"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_29_EmptyTutorId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for Empty tutor Id \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message verification for Empty Tutor Id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tutor Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/dashboard/tutor/:TutorId",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"dashboard",
+										"tutor",
+										":TutorId"
+									],
+									"variable": [
+										{
+											"key": "TutorId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TC_Tutor_Dashboard_Backend_29_WithoutParameter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"1. Status Verification for WithoutParameter \", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"2. Message verification for WithoutParameter\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TuitionURL}}/dashboard/tutor/",
+									"host": [
+										"{{TuitionURL}}"
+									],
+									"path": [
+										"dashboard",
+										"tutor",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "[FRONTEND] API Integration-MT161",
+			"item": [
+				{
+					"name": "TC_Notification_admin_01_200Ok",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"notificationId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"senderId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"senderRole\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"receiverId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"receiverRole\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/notification?id=admin",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"notification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Notification_Tutor_01_200Ok",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"notificationId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"senderId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"senderRole\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"receiverId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"receiverRole\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/notification?id=U_00258",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"notification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "U_00258"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Notification_Student_01_200Ok",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify the attributes\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"notificationId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"senderId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"senderRole\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"receiverId\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"receiverRole\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/notification?id=U_00002",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"notification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "U_00002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Institution_03_InvalidId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. Status Verification with 404 Not found \", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. not found message Verification\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/notification?id=09",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"notification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "09"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Notification_04_IDEmpty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 404 Not found status verification\", function(){\r",
+									"pm.response.to.have.status(404);\r",
+									"pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. not found message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"not found\");\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/notification?id=",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"notification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Notification_05_WithoutParameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"1. 400 Bad Request Status verification\", function(){\r",
+									"pm.response.to.have.status(400);\r",
+									"pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"2. Bad Request message verification\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+									"pm.expect(pm.response.text()).to.include(\"400\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{OperationManagerURL}}/notification",
+							"host": [
+								"{{OperationManagerURL}}"
+							],
+							"path": [
+								"notification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "studentId",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TuitionURL",
+			"value": "http://139.144.4.108:8093/mytutioncenter",
+			"type": "string"
+		},
+		{
+			"key": "OperationManagerURL",
+			"value": "http://139.144.4.108:8091/mytuitioncenter"
+		}
+	]
+}

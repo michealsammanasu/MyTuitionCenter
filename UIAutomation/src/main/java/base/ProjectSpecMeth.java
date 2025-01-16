@@ -43,7 +43,7 @@ public class ProjectSpecMeth extends ExClassReadData
 	}
 	@AfterMethod
 	public void postCondition()
-	{
+	{	System.out.println();
 		getDriver().quit();
 	}
 	
